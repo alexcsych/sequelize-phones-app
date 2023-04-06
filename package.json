@@ -1,0 +1,21 @@
+{
+  "name": "sequelize-phones-app",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node .",
+    "start-dev": "nodemon ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexcsych/sequelize-phones-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexcsych/sequelize-phones-app/issues"
+  },
+  "homepage": "https://github.com/alexcsych/sequelize-phones-app#readme"
+}
