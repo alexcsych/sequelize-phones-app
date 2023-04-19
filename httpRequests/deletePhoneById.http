@@ -1,0 +1,3 @@
+DELETE http://localhost:5000/api/phones/20
+
+DELETE http://localhost:5000/api/phones/1000

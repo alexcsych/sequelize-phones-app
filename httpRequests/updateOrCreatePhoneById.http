@@ -1,0 +1,20 @@
+PUT http://localhost:5000/api/phones/20
+Content-Type: application/json
+
+{
+  "model": "iPhone 14",
+  "brand": "Apple",
+  "yearOfManufacture": "2022",
+  "ramSize": "6",
+  "processorId": "3",
+  "screenSize": "6.6",
+  "nfc": true
+}
+
+PUT http://localhost:5000/api/phones/20 
+Content-Type: application/json
+
+{
+  "ramSize": "4",
+  "screenSize": "6.5"
+}

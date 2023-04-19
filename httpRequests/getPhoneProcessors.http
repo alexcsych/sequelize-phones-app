@@ -1,0 +1,5 @@
+GET http://localhost:5000/api/phones/5/processors HTTP/1.1
+
+GET http://localhost:5000/api/phones/6/processors HTTP/1.1
+
+GET http://localhost:5000/api/phones/1000/processors HTTP/1.1

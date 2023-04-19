@@ -1,0 +1,12 @@
+POST http://localhost:5000/api/phones
+Content-Type: application/json
+
+{
+  "model": "С9",
+  "brand": "Nokia",
+  "yearOfManufacture": "2008",
+  "ramSize": "2",
+  "processorId": "4",
+  "screenSize": "6.4",
+  "nfc": false
+}
