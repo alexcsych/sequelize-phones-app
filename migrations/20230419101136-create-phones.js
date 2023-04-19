@@ -23,14 +23,21 @@ module.exports = {
       ram_size: {
         type: Sequelize.INTEGER,
       },
-      processor: {
-        type: Sequelize.STRING,
-      },
       screen_size: {
         type: Sequelize.FLOAT,
       },
       nfc: {
         type: Sequelize.BOOLEAN,
+      },
+      processor_id: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'processors',
+          key: 'id',
+        },
+        allowNull: false,
+        onDelete: 'RESTRICT',
+        onUpdate: 'CASCADE',
       },
       created_at: {
         allowNull: false,

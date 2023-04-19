@@ -2,17 +2,14 @@
 const { CURRENT_YEAR } = require('../constants');
 const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class phones extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
+  class Phones extends Model {
     static associate (models) {
-      // define association here
+      Phones.belongsTo(models.Processors, {
+        foreignKey: 'processorId',
+      });
     }
   }
-  phones.init(
+  Phones.init(
     {
       model: {
         type: DataTypes.STRING(64),
@@ -28,14 +25,14 @@ module.exports = (sequelize, DataTypes) => {
           len: [2, 64],
         },
       },
-      year_of_manufacture: {
+      yearOfManufacture: {
         type: DataTypes.INTEGER,
         validate: {
           min: 2000,
           max: CURRENT_YEAR,
         },
       },
-      ram_size: {
+      ramSize: {
         type: DataTypes.INTEGER,
         validate: {
           min: 2,
@@ -46,13 +43,7 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
-      processor: {
-        type: DataTypes.STRING(64),
-        validate: {
-          len: [2, 64],
-        },
-      },
-      screen_size: {
+      screenSize: {
         type: DataTypes.FLOAT,
         validate: {
           min: 0,
@@ -62,9 +53,9 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: 'phones',
+      modelName: 'Phones',
       underscored: true,
     }
   );
-  return phones;
+  return Phones;
 };
