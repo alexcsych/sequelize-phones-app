@@ -3,7 +3,7 @@ const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Processor extends Model {
     static associate (models) {
-      Processor.hasMany(models.Phones, {
+      Processor.hasMany(models.Phone, {
         foreignKey: {
           name: 'processorId',
           allowNull: false,
@@ -38,7 +38,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: 'Processors',
+      modelName: 'Processor',
       underscored: true,
     }
   );

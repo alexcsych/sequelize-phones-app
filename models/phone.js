@@ -2,14 +2,14 @@
 const { CURRENT_YEAR } = require('../constants');
 const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Phones extends Model {
+  class Phone extends Model {
     static associate (models) {
-      Phones.belongsTo(models.Processors, {
+      Phone.belongsTo(models.Processor, {
         foreignKey: 'processorId',
       });
     }
   }
-  Phones.init(
+  Phone.init(
     {
       model: {
         type: DataTypes.STRING(64),
@@ -53,9 +53,9 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: 'Phones',
+      modelName: 'Phone',
       underscored: true,
     }
   );
-  return Phones;
+  return Phone;
 };
