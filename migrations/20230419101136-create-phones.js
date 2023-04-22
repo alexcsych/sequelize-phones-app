@@ -10,11 +10,11 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       model: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(64),
         allowNull: false,
       },
       brand: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(64),
         allowNull: false,
       },
       year_of_manufacture: {

@@ -10,10 +10,10 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       model: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(64),
       },
       manufacturer: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(64),
       },
       cores: {
         type: Sequelize.INTEGER,
