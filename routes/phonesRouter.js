@@ -15,6 +15,4 @@ phonesRouter
   .put(phonesController.updateOrCreatePhoneById, phonesController.createPhone)
   .delete(phonesController.deletePhoneById);
 
-phonesRouter.get('/:phoneId/processors', phonesController.getPhoneProcessors);
-
 module.exports = phonesRouter;
