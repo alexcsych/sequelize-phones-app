@@ -1,11 +1,11 @@
 const _ = require('lodash');
 const createError = require('http-errors');
-const { Phones } = require('./../models');
+const { Phone } = require('./../models');
 
 module.exports.createPhone = async (req, res, next) => {
   const { body } = req;
   try {
-    const createdPhone = await Phones.create(body);
+    const createdPhone = await Phone.create(body);
     const preparedPhone = _.omit(createdPhone.get(), [
       'createdAt',
       'updatedAt',
@@ -20,7 +20,7 @@ module.exports.getPhones = async (req, res, next) => {
   const { limit = 10, offset = 0 } = req.query;
 
   try {
-    const foundPhones = await Phones.findAll({
+    const foundPhones = await Phone.findAll({
       raw: true,
       attributes: { exclude: ['createdAt', 'updatedAt'] },
       limit,
@@ -37,7 +37,7 @@ module.exports.getPhoneById = async (req, res, next) => {
   const { phoneId } = req.params;
 
   try {
-    const foundPhone = await Phones.findByPk(phoneId, {
+    const foundPhone = await Phone.findByPk(phoneId, {
       raw: true,
       attributes: { exclude: ['createdAt', 'updatedAt'] },
     });
@@ -57,7 +57,7 @@ module.exports.updatePhoneById = async (req, res, next) => {
   } = req;
 
   try {
-    const [, [updatedPhone]] = await Phones.update(body, {
+    const [, [updatedPhone]] = await Phone.update(body, {
       raw: true,
       where: { id: phoneId },
       returning: true,
@@ -82,7 +82,7 @@ module.exports.updateOrCreatePhoneById = async (req, res, next) => {
   } = req;
 
   try {
-    const [, [updatedPhone]] = await Phones.update(body, {
+    const [, [updatedPhone]] = await Phone.update(body, {
       raw: true,
       where: { id: phoneId },
       returning: true,
@@ -105,34 +105,13 @@ module.exports.deletePhoneById = async (req, res, next) => {
   const { phoneId } = req.params;
 
   try {
-    const deletedPhonesCount = await Phones.destroy({ where: { id: phoneId } });
+    const deletedPhonesCount = await Phone.destroy({ where: { id: phoneId } });
 
     if (!deletedPhonesCount) {
       return next(createError(404, 'Phone Not Found'));
     }
 
     res.status(204).end();
-  } catch (e) {
-    next(e);
-  }
-};
-
-module.exports.getPhoneProcessors = async (req, res, next) => {
-  const { phoneId } = req.params;
-
-  try {
-    const foundPhone = await Phones.findByPk(phoneId);
-
-    if (!foundPhone) {
-      return next(createError(404, 'Phone Not Found'));
-    }
-
-    const foundProcessors = await foundPhone.getProcessor({
-      raw: true,
-      attributes: { exclude: ['createdAt', 'updatedAt'] },
-    });
-
-    res.status(200).send({ data: foundProcessors });
   } catch (e) {
     next(e);
   }
